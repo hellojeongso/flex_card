@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  line-height: 1.5em;
+  margin: 0;
+}
+
+section {
+  display: flex;
+  justify-content: space-between;
+}
+.media {
+  display: flex;
+  background-color: #eee;
+  width: 600px;
+  padding: 10px;
+  box-sizing: border-box;
+  /* 여기서 border-box를 해야
+  미디어쿼리 설정시 width:100%로 설정했을때
+  사이즈가 포함돼서 설정된다.
+  안하면 padding값때문에 스크롤바 생성됨 */
+}
+
+.media img {
+  width: 100px;
+  flex: 2;
+  margin-right: 1em;
+  /* body에 font-size를 15px로 설정해서
+  1em은 15px에 해당한다. */
+}
+
+.media-body {
+  flex: 5;
+}
+
+/* 모바일 */
+@media (max-width: 767px) {
+  section {
+    flex-direction: column;
+  }
+
+  .media {
+    flex-direction: column;
+    width: 100%;
+    /* width를 100%로 설정한 이유:
+    pc버전에서 600px로 설정했기 때문에
+    600px 이하로 줄어들면 스크롤바가 생성되면서 짤린다. */
+    margin-top: 10px;
+  }
+
+  .media:first-child {
+    margin-top: 0;
+  }
+  .media img {
+    /* width를 100%로 설정한 이유:
+    원래 이미지 크기,
+    pc버전에서는 해상도를 위해 100px로 설정 */
+    width: 100%;
+  }
+
+  .media-body h3 {
+    margin-top: 1em;
+  }
+}
+
+/* 태블릿 */
+@media (min-width:768px) and (max-width:1024px) {
+  section {
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+  }
+  .media {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .media:nth-child(1) {
+    margin-top: 0;
+  }
+}
